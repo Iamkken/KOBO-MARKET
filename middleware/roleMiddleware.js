@@ -8,7 +8,7 @@ const authorize = (...allowedRoles) => {
             });
         }
 
-        if (!allowedRoles.includes(req.user.role)) {
+        if (!allowedRoles.some(role => req.user.roles.includes(role))) {
             return res.status(403).json({
                 success: false,
                 message: 'You are not authorized to access this resource'

@@ -5,6 +5,10 @@ const registerSchema = Joi.object({
 
     email: Joi.string().email().required(),
 
+    phone: Joi.string()
+    .pattern(/^[0-9+]{10,15}$/)
+    .required(),
+
     password: Joi.string()
         .min(8)
         .max(72)

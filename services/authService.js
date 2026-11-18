@@ -20,8 +20,9 @@ const registerUser = async (userData) => {
         user = await User.create({
             fullName: userData.fullName,
             email: userData.email,
+            phone: userData.phone,
             passwordHash,
-            role: userData.role || 'buyer',
+            roles: [userData.role || 'buyer'],
             isEmailVerified: false
         });
 
@@ -90,7 +91,7 @@ const loginUser = async (email, password) => {
             id: user._id,
             fullName: user.fullName,
             email: user.email,
-            role: user.role
+            roles: user.roles
         },
         accessToken,
         refreshToken
